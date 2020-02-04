@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>v-if test</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>v-if test </h2>
+
+    <h1 v-if="a%2 == 1" style="color: red;">{{a}} 奇数红色</h1>
+    <h1 v-else style="color: blue;">{{a}} 偶数蓝色</h1>
+    <button @click="a=a+1">click to add one</button>
+    <br>
+    <hr>
+    <div style="height: 200px;">
+      <h2>v-show test </h2>
+      <button @click="a=a+1">click to add one</button>
+      <h1 v-show="a%2 == 1">奇数展示，偶数不展示</h1>
+    </div>
+
+    <hr>
+    <a href="https://cn.vuejs.org/v2/guide/conditional.html">条件渲染网页</a>
+
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        a: 1,
+
+      },
+    })  
+  </script>
+
+</body>
+
+</html>

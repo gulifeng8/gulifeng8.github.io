@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>v-if test</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>v-for test </h2>
+    <div style="width:25%;float: left;">
+      未排序(此处演示 有bug)
+      <ul>
+        <li v-for="item in list1">{{item}}</li>
+      </ul>
+    </div>
+    <div style="width:25%;float: left;">
+      错误排序
+      <br>
+      <ul>
+        <li v-for="item in wrongList">{{item}}</li>
+      </ul>
+    </div>
+
+    <div style="width: 25%;float: left;">
+      排序<br>
+      <ul>
+        <li v-for="item in sortedList">{{item}}</li>
+      </ul>
+    </div>
+    <div style="width:25%;float: left;">
+      按键值排序 有bug
+      <ul>
+        <li v-for="item in newArray">{{item}}</li>
+      </ul>
+    </div>
+    <br>
+<hr>
+
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        list1: [5, 10000, 68, 7], // 假数据
+        list: [5, 10000, 68, 7],
+        array:[{name:'one', num:26},{name:'two', num:100},{name:'three', num:55},]　
+      },
+      computed: {
+        sortedList: function () {
+          return this.list.sort((a, b) => a - b); 
+        },
+        wrongList: function () {
+          return this.list.sort();
+        },
+        newArray: function(){
+          return sortByKey(this.array,'num')
+          // 这里有bug 不能按照名字的开头来排序
+        }
+      }
+    })  
+
+    function sortByKey(array,key){
+        return array.sort(function(a,b){
+          x=a[key]
+          y=b[key]
+          return((x<y)?-1:(x>y?1:0))
+        })
+      }
+  </script>
+
+</body>
+
+</html>
