@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>v-on</title>
+</head>
+
+<body>
+  <div id='app'>
+    本场得分:{{score}}
+    <p><button v-on:click="addValue">加分</button></p>
+    <p><button @click='subValue'> 减分</button></p>
+    <input type="checkbox" value="选择1" id="checkbox1"  v-model="name">
+    <label for="checkbox1">checkbox1</label>
+    <input type="checkbox" value="选择2" id="checkbox2" v-model="name">
+    <label for="checkbox2">checkbox2</label>
+    <p v-show="name.length > 0">{{name}}</p>
+
+  </div>
+
+
+
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        score: 0,
+        name:[],
+
+      },
+      methods: {
+        addValue:function(){
+          this.score++
+        },
+        subValue:function(){
+          this.score--
+        }
+      },
+    })  
+  </script>
+</body>
+
+</html>

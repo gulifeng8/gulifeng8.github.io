@@ -14,6 +14,7 @@
     <span>{{message}}</span>
     <br>
     <span v-text="message"></span>
+    <span v-html="htmlMessage"></span>
 
 
 
@@ -34,6 +35,7 @@
       el: '#app',
       data: {
         message: 1,
+        htmlMessage:'<h2>Hello World! </h2>'
 
 
       }

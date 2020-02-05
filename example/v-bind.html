@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>v-bind</title>
+
+</head>
+
+<body>
+  <div id='app'>
+    <p :class="className">这是一个p标签</p>
+    <br>
+    <p :class="{classBlue:true}">这也是一个p标签</p>
+
+    <input type="checkbox" id='checkbox' v-model="istrue">
+    <label for="checkbox">{{istrue}}</label>
+    <p :class="{classBlue:istrue}">这是一个判断p标签</p>
+
+
+
+
+
+
+  </div>
+  <style>
+    .classA {
+      color: red;
+    }
+
+    .classBlue {
+      color: blue;
+      font-size: 150%;
+    }
+  </style>
+
+
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        className: "classA",
+        istrue: false
+
+      }
+    })  
+  </script>
+</body>
+
+</html>
