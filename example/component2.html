@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../assets/js/vue.js"></script>
+  <title>组件 component2</title>
+</head>
+
+<body>
+  <h1>组件 component2</h1>
+  <hr>
+  <div id="app">
+    <panda a-b="小驼峰代替-(-写在html中，小驼峰写在script中)"></panda>
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+
+      },
+      components: {
+        "panda": {
+          template: `<div style="color:green">处理-   {{aB}}        a-b == aB</div>`,
+          props:['aB']
+        },
+      }
+    })
+  </script>
+
+</body>
+
+</html>

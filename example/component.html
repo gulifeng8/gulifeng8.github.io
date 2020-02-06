@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../assets/js/vue.js"></script>
+  <title>组件 component1</title>
+</head>
+
+<body>
+  <h1>组件 component1</h1>
+  <hr>
+  <div id="app">
+    <cpdemo></cpdemo>
+    <panda></panda>
+    
+  </div>
+
+  <script>
+    Vue.component('cpdemo', {
+      template: `
+      <div style='color:red'>我是全局的component组件 cpDemo</div>
+      `
+
+
+    })
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+
+      },
+      components: {
+        "panda": {template:`<div style="color:green"> 我是局部component组件</div>`
+        },
+      }
+    })
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.set</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Vue.set</h1>
+    <hr>
+    <ol>
+      <li v-for="(item, index) in list" :key="index">{{item}}</li>
+    </ol>
+    
+    <button onclick="useless()">无效按钮</button>
+    <button onclick="changeVaule()">有效按钮</button>
+
+  </div>
+  
+  <script>
+    function useless(){
+      app.list[1]='我是被无效按钮改变的内容，但是我没法自动显示'
+    }
+
+    function changeVaule(){
+      Vue.set(app.list, 1, app.list[1]+1111)
+    }
+
+    var outData={
+      list:[1,2,3,4]
+    }
+
+    
+    var app = new Vue({
+      el:'#app',
+      data:outData
+    })
+  </script>
+
+
+</body>
+</html>

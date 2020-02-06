@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>自定义指令</title>
+</head>
+
+<body>
+  <div id='app'>
+    <div v-cs="color">{{num}}</div>
+    <p><button @click="add">add 1</button></p>
+
+
+
+
+
+  </div>
+
+
+
+
+  <script type="text/javascript">
+    Vue.directive('cs', function(el,binding){
+      el.style="color:"+binding.value
+      console.log(binding)
+      console.log(binding.name)
+      console.log(binding.value)
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num:10,
+        color:"red"
+      },
+      methods: {
+        add:function(){
+          this.num++
+        }
+      },
+    })  
+  </script>
+</body>
+
+</html>

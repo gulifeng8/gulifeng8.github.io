@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.extend </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>Vue.extend 扩展实例构造器</h1>
+  <hr>
+  <author></author>
+  <script>
+    var authorExtend = Vue.extend({
+      template:"<p><a :href='authorURL'>{{authorName}}</a></p>",
+      data:function(){
+        return{
+          authorName:'古',
+          authorURL:'http://gulifeng8.github.io/'
+        }
+      }
+    })
+    new authorExtend().$mount('author')
+  </script>
+  
+</body>
+</html>

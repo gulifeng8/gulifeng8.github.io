@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../assets/js/vue.js"></script>
+  <title>组件 component3</title>
+</head>
+
+<body>
+  <h1>组件 component3</h1>
+  <hr>
+  <div id="app">
+    <component :is="componentId"></component>
+    <button @click='changeId'>改变自定义的template</button>
+    
+  </div>
+
+  <script>
+    var cpA = {
+      template: `<div style="color: red;">I'm cpA</div>`
+    }
+    var cpB = {
+      template: `<div style="color: blue;">I'm cpB</div>`
+    }
+    var cpC = {
+      template: `<div style="color: green;">I'm cpC</div>`
+    }
+    var app = new Vue({
+      el: "#app",
+      data: {
+        componentId: 'cpA'
+
+      },
+      components: { 'cpA': cpA, 'cpB': cpB, 'cpC': cpC },
+      methods: {
+        changeId: function () {
+          if(this.componentId=='cpA'){
+            this.componentId='cpB'
+          }else if(this.componentId=='cpB'){
+            this.componentId='cpC'
+          }else{
+            this.componentId='cpA'
+          }
+        },
+      },
+
+    })
+  </script>
+
+</body>
+
+</html>
