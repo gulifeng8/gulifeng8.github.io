@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>computed option</title>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>computed option</h1>
+    <hr>
+    {{price}}
+    <br>
+    {{newPrice}}
+    <hr> 
+    <h2>computed 变换</h2>
+    <ul>
+      <li v-for="item in reversedNews">{{item.title}}---{{item.date}}</li>
+    </ul>
+  </div>
+
+
+
+  <script type="text/javascript">
+    var newsList = [
+      { title: '习近平致函萨勒 祝贺中非合作论坛成立20周年', date: '2020/02/05' },
+      { title: '武汉建设三处方舱医院  做好疫情防控，强化法治保障', date: '2020/02/06' },
+      { title: '《新闻1+1》疫情分析 团结合作势在必行', date: '2020/02/06' },
+      { title: '湖北省新增新型肺炎2987例 非湖北地区新增病例数连降两日', date: '2020/02/07' },
+
+    ]
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        price: 100,
+        newsList: newsList
+
+      },
+      computed: {
+        newPrice: function () {
+          return "￥" + this.price + '元'
+        },
+        reversedNews: function () {
+          return this.newsList.reverse()
+        }
+      },
+
+    })  
+  </script>
+</body>
+
+</html>

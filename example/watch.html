@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>watch option</title>
+</head>
+
+<body>
+  <h1>watch option</h1>
+  <hr>
+  <div id='app'>
+    <p>今日温度：{{temp}}</p>
+    <p>穿衣建议：{{recommend}}</p>
+    <button @click="add">增加温度</button>
+    <button @click="sub">减少温度</button>
+  </div>
+
+
+
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        temp:14,
+        recommend:'夹克衫'
+
+      },
+      methods: {
+        add: function(){
+          this.temp+=5
+        },
+        sub:function(){
+          this.temp-=5
+        }
+
+      },
+      watch: {
+        temp:function(newTemp, oldTemp){
+          if(newTemp>=26){
+            this.recommend='T恤短袖'
+          }else if(
+            0<= newTemp <26
+          ){
+            this.recommend = '夹克衫'
+          }else{
+            this.recommend = '大棉袄二棉裤，里头是羊皮外头裹着布'
+          }
+        }
+      },
+    })  
+  </script>
+</body>
+
+</html>
