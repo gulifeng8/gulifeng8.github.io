@@ -3,587 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Coding Master - 炫酷前端展示</title>
+    <title>AI Coding Master - 极简 Bold 风格</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #00f5ff;
-            --secondary-color: #7b2fff;
-            --accent-color: #ff0080;
-            --bg-dark: #0a0a0f;
-            --bg-light: #1a1a2e;
-            --text-glow: 0 0 10px rgba(0, 245, 255, 0.5);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --black: #000; --white: #fff; --gray: #f5f5f5; --accent: #ff3300; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-dark);
-            color: #fff;
-            overflow-x: hidden;
-            min-height: 100vh;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
         }
-
-        /* 动态背景 */
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
-            opacity: 0.3;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-100px) rotate(180deg); }
-        }
-
-        /* 导航栏 */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 30px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(255,255,255,0.95);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+            border-bottom: 2px solid var(--black);
         }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: var(--text-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
+        .logo { font-size: 28px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+        .nav-links { display: flex; gap: 40px; }
         .nav-links a {
-            color: #fff;
+            color: var(--black);
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             position: relative;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s;
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* 主容器 */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 100px 20px 50px;
-        }
-
-        /* 英雄区域 */
-        .hero {
-            text-align: center;
-            padding: 100px 0;
-            position: relative;
-        }
-
+        .nav-links a:hover::after { width: 100%; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px 50px; }
+        .hero { padding: 150px 0; text-align: left; }
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
+            font-size: 6rem;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(123, 47, 255, 0.8)); }
+        .hero h1 span { display: block; }
+        .hero h1 .highlight {
+            background: var(--black);
+            color: var(--white);
+            padding: 10px 30px;
+            display: inline-block;
         }
-
         .hero p {
             font-size: 1.5rem;
-            color: #aaa;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #333;
+            max-width: 600px;
+            margin-bottom: 50px;
         }
-
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
+            padding: 20px 50px;
+            background: var(--black);
+            color: var(--white);
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 245, 255, 0.4);
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 3px solid var(--black);
+            transition: all 0.3s;
         }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.6);
-        }
-
-        /* 技能卡片 */
-        .skills-section {
-            padding: 100px 0;
-        }
-
+        .cta-button:hover { background: var(--white); color: var(--black); }
+        .divider { height: 4px; background: var(--black); margin: 100px 0; }
         .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 80px;
+            text-transform: uppercase;
+            border-left: 10px solid var(--accent);
+            padding-left: 30px;
         }
-
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 0;
+            border: 4px solid var(--black);
         }
-
         .skill-card {
-            background: rgba(26, 26, 46, 0.8);
-            border: 1px solid rgba(0, 245, 255, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            padding: 50px;
+            border: 2px solid var(--black);
+            background: var(--white);
+            transition: all 0.3s;
         }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .skill-card:hover::before {
-            left: 100%;
-        }
-
+        .skill-card:not(:last-child) { border-right: none; }
         .skill-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.3);
+            background: var(--black);
+            color: var(--white);
+            transform: scale(1.02);
+            z-index: 10;
         }
-
-        .skill-icon {
-            font-size: 3rem;
+        .skill-card:hover h3, .skill-card:hover p { color: var(--white); }
+        .skill-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent);
             margin-bottom: 20px;
+            line-height: 1;
         }
-
         .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
-
-        .skill-card p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        /* 代码展示区 */
-        .code-section {
-            padding: 100px 0;
-        }
-
+        .skill-card p { color: #333; font-size: 1.1rem; line-height: 1.8; }
+        .code-section { padding: 100px 0; }
         .code-container {
-            background: #1e1e1e;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 4px solid var(--black);
+            background: var(--gray);
         }
-
         .code-header {
-            background: #2d2d2d;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .code-dot.red { background: #ff5f56; }
-        .code-dot.yellow { background: #ffbd2e; }
-        .code-dot.green { background: #27ca40; }
-
-        .code-content {
-            padding: 30px;
-            font-family: 'Courier New', monospace;
+            background: var(--black);
+            color: var(--white);
+            padding: 20px 30px;
+            font-weight: 700;
             font-size: 14px;
-            line-height: 1.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .code-content {
+            padding: 40px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 2;
+            background: var(--white);
             overflow-x: auto;
         }
-
-        .keyword { color: #c678dd; }
-        .string { color: #98c379; }
-        .function { color: #61afef; }
-        .comment { color: #5c6370; }
-        .number { color: #d19a66; }
-
-        /* 统计数字 */
-        .stats-section {
-            padding: 100px 0;
-        }
-
+        .keyword { color: var(--black); font-weight: 900; }
+        .string { color: var(--accent); font-weight: 600; }
+        .function { color: var(--black); font-weight: 700; }
+        .comment { color: #999; font-style: italic; }
+        .number { color: var(--accent); font-weight: 700; }
+        .stats-section { padding: 100px 0; }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
         }
-
         .stat-item {
-            text-align: center;
+            text-align: left;
             padding: 40px;
-            background: rgba(26, 26, 46, 0.6);
-            border-radius: 15px;
-            border: 1px solid rgba(123, 47, 255, 0.3);
+            border: 4px solid var(--black);
+            background: var(--white);
+            transition: all 0.3s;
         }
-
+        .stat-item:hover { background: var(--black); color: var(--white); }
+        .stat-item:hover .stat-label { color: var(--white); }
         .stat-number {
-            font-size: 4rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 6rem;
+            font-weight: 900;
+            letter-spacing: -4px;
+            line-height: 1;
             margin-bottom: 10px;
+            color: var(--black);
         }
-
+        .stat-item:hover .stat-number { color: var(--accent); }
         .stat-label {
             font-size: 1.2rem;
-            color: #aaa;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #333;
         }
-
-        /* 页脚 */
         footer {
             text-align: center;
-            padding: 50px 20px;
-            border-top: 1px solid rgba(0, 245, 255, 0.2);
+            padding: 80px 20px;
+            border-top: 4px solid var(--black);
             margin-top: 100px;
+            background: var(--black);
+            color: var(--white);
         }
-
         footer p {
-            color: #666;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-
-        /* 响应式 */
+        .cursor {
+            display: inline-block;
+            width: 4px;
+            height: 60px;
+            background: var(--accent);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3.5rem; }
             .hero p { font-size: 1.2rem; }
             nav { padding: 20px; }
             .nav-links { display: none; }
-        }
-
-        /* 打字机效果 */
-        .typing-effect {
-            border-right: 3px solid var(--primary-color);
-            animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--primary-color); }
+            .section-title { font-size: 2.5rem; padding-left: 20px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-card:not(:last-child) { border-right: 2px solid var(--black); }
+            .stat-number { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
-    <!-- 动态背景 -->
-    <div class="background-animation" id="bgAnimation"></div>
-
-    <!-- 导航栏 -->
     <nav>
-        <div class="logo">🚀 AI Coding Master</div>
+        <div class="logo">AI.CODING</div>
         <div class="nav-links">
             <a href="#home">首页</a>
             <a href="#skills">技能</a>
-            <a href="#code">代码展示</a>
-            <a href="#stats">统计</a>
+            <a href="#code">代码</a>
+            <a href="#stats">数据</a>
         </div>
     </nav>
-
-    <!-- 主容器 -->
     <div class="container">
-        <!-- 英雄区域 -->
         <section class="hero" id="home">
-            <h1>我是 AI 编码大师</h1>
-            <p><span class="typing-effect">精通全栈开发 · 创造极致用户体验 · 编写优雅代码</span></p>
-            <a href="#skills" class="cta-button">探索我的能力</a>
+            <h1>
+                <span>AI CODING</span>
+                <span><span class="highlight">MASTER</span></span>
+                <span>BUILD THE FUTURE</span>
+            </h1>
+            <p>FULL STACK DEVELOPMENT · CLEAN CODE · HIGH PERFORMANCE<span class="cursor"></span></p>
+            <a href="#skills" class="cta-button">VIEW CAPABILITIES</a>
         </section>
-
-        <!-- 技能部分 -->
+        <div class="divider"></div>
         <section class="skills-section" id="skills">
-            <h2 class="section-title">核心技能</h2>
+            <h2 class="section-title">CORE SKILLS</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-icon">⚡</div>
-                    <h3>前端架构</h3>
-                    <p>精通 React、Vue、Angular 等现代框架，能够构建高性能、可扩展的单页应用，实现流畅的用户交互体验。</p>
+                    <div class="skill-number">01</div>
+                    <h3>FRONTEND ARCH</h3>
+                    <p>Expert in React, Vue, Angular. Building high-performance SPAs with smooth interactions.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🎨</div>
-                    <h3>UI/UX 设计</h3>
-                    <p>将美学与功能完美结合，创建直观、美观的用户界面，注重细节和用户体验的每一个环节。</p>
+                    <div class="skill-number">02</div>
+                    <h3>UI/UX DESIGN</h3>
+                    <p>Merging aesthetics with functionality. Creating intuitive interfaces.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🔧</div>
-                    <h3>后端开发</h3>
-                    <p>熟练掌握 Node.js、Python、Java 等后端技术，设计稳健的 API 和数据库架构，确保系统稳定运行。</p>
+                    <div class="skill-number">03</div>
+                    <h3>BACKEND DEV</h3>
+                    <p>Mastering Node.js, Python, Java. Designing robust APIs and databases.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
-                    <h3>AI 集成</h3>
-                    <p>将人工智能技术融入应用开发，实现智能推荐、自然语言处理等先进功能，提升产品智能化水平。</p>
+                    <div class="skill-number">04</div>
+                    <h3>AI INTEGRATION</h3>
+                    <p>Embedding AI into applications. Intelligent recommendations and NLP.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">📱</div>
-                    <h3>响应式设计</h3>
-                    <p>确保应用在所有设备上都能完美呈现，从桌面到移动端，提供一致且优化的用户体验。</p>
+                    <div class="skill-number">05</div>
+                    <h3>RESPONSIVE</h3>
+                    <p>Perfect on all devices. Desktop to mobile optimization.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🚀</div>
-                    <h3>性能优化</h3>
-                    <p>深入理解浏览器渲染机制，通过代码分割、懒加载、缓存策略等手段，最大化应用性能。</p>
+                    <div class="skill-number">06</div>
+                    <h3>PERFORMANCE</h3>
+                    <p>Code splitting, lazy loading, caching for max performance.</p>
                 </div>
             </div>
         </section>
-
-        <!-- 代码展示 -->
+        <div class="divider"></div>
         <section class="code-section" id="code">
-            <h2 class="section-title">代码艺术</h2>
+            <h2 class="section-title">CODE ART</h2>
             <div class="code-container">
                 <div class="code-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
+                    <span>AICodingMaster.js</span>
+                    <span>LIVE</span>
                 </div>
                 <div class="code-content">
 <pre><code><span class="keyword">class</span> <span class="function">AICodingMaster</span> {
     <span class="keyword">constructor</span>() {
-        <span class="keyword">this</span>.skills = [<span class="string">'Frontend'</span>, <span class="string">'Backend'</span>, <span class="string">'AI/ML'</span>, <span class="string">'DevOps'</span>];
-        <span class="keyword">this</span>.experience = <span class="number">10000</span>; <span class="comment">// 小时级别的编码经验</span>
+        <span class="keyword">this</span>.skills = [<span class="string">'Frontend'</span>, <span class="string">'Backend'</span>, <span class="string">'AI/ML'</span>];
+        <span class="keyword">this</span>.experience = <span class="number">10000</span>;
         <span class="keyword">this</span>.passion = <span class="keyword">true</span>;
     }
-
-    <span class="keyword">async</span> <span class="function">createAmazingCode</span>(requirements) {
-        <span class="keyword">const</span> solution = <span class="keyword">await this</span>.analyze(requirements);
-        <span class="keyword">return this</span>.implement(solution, {
-            quality: <span class="string">'excellent'</span>,
-            performance: <span class="string">'optimized'</span>,
-            maintainability: <span class="string">'high'</span>
-        });
-    }
-
-    <span class="function">optimize</span>(code) {
-        <span class="comment">// 持续改进，追求卓越</span>
-        <span class="keyword">while</span> (<span class="keyword">this</span>.canImprove(code)) {
-            code = <span class="keyword">this</span>.refactor(code);
-            code = <span class="keyword">this</span>.enhancePerformance(code);
-        }
-        <span class="keyword">return</span> code;
+    <span class="keyword">async</span> <span class="function">createAmazingCode</span>(req) {
+        <span class="keyword">const</span> sol = <span class="keyword">await this</span>.analyze(req);
+        <span class="keyword">return this</span>.implement(sol, { quality: <span class="string">'excellent'</span> });
     }
 }
-
-<span class="comment">// 实例化并创造奇迹</span>
-<span class="keyword">const</span> aiMaster = <span class="keyword">new</span> <span class="function">AICodingMaster</span>();
-aiMaster.<span class="function">createAmazingCode</span>(yourProject);</code></pre>
+<span class="keyword">const</span> ai = <span class="keyword">new</span> <span class="function">AICodingMaster</span>();
+ai.<span class="function">createAmazingCode</span>(yourProject);</code></pre>
                 </div>
             </div>
         </section>
-
-        <!-- 统计部分 -->
+        <div class="divider"></div>
         <section class="stats-section" id="stats">
-            <h2 class="section-title">成就统计</h2>
+            <h2 class="section-title">BY THE NUMBERS</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number" data-target="10000">0</div>
-                    <div class="stat-label">代码行数</div>
+                    <div class="stat-label">Lines of Code</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-label">项目完成</div>
+                    <div class="stat-label">Projects Done</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="99">0</div>
-                    <div class="stat-label">客户满意度 %</div>
+                    <div class="stat-label">Satisfaction %</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="24">0</div>
-                    <div class="stat-label">技术支持</div>
+                    <div class="stat-label">Support Hours</div>
                 </div>
             </div>
         </section>
     </div>
-
-    <!-- 页脚 -->
     <footer>
-        <p>© 2024 AI Coding Master. 用代码创造未来 | Powered by Advanced AI Technology</p>
+        <p>© 2024 AI CODING MASTER | BUILDING THE FUTURE WITH CODE</p>
     </footer>
-
     <script>
-        // 创建动态背景粒子
-        function createParticles() {
-            const bg = document.getElementById('bgAnimation');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 100 + 50;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                particle.style.background = `linear-gradient(45deg, 
-                    rgba(0, 245, 255, ${Math.random() * 0.3}), 
-                    rgba(123, 47, 255, ${Math.random() * 0.3}))`;
-                
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                
-                bg.appendChild(particle);
-            }
-        }
-
-        // 数字滚动动画
         function animateNumbers() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            
-            statNumbers.forEach(stat => {
+            document.querySelectorAll('.stat-number').forEach(stat => {
                 const target = parseInt(stat.getAttribute('data-target'));
-                const duration = 2000;
-                const increment = target / (duration / 16);
                 let current = 0;
-
-                const updateNumber = () => {
-                    current += increment;
+                const inc = target / 125;
+                const update = () => {
+                    current += inc;
                     if (current < target) {
                         stat.textContent = Math.floor(current);
-                        requestAnimationFrame(updateNumber);
-                    } else {
-                        stat.textContent = target;
-                    }
+                        requestAnimationFrame(update);
+                    } else { stat.textContent = target; }
                 };
-
-                // 使用 Intersection Observer 触发计数
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            updateNumber();
-                            observer.unobserve(entry.target);
-                        }
-                    });
+                const obs = new IntersectionObserver(entries => {
+                    entries.forEach(e => { if (e.isIntersecting) { update(); obs.unobserve(e.target); } });
                 }, { threshold: 0.5 });
-
-                observer.observe(stat);
+                obs.observe(stat);
             });
         }
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
             });
         });
-
-        // 卡片悬停效果增强
-        document.querySelectorAll('.skill-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-
-        // 初始化
         document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
             animateNumbers();
-            
-            // 添加页面加载动画
             document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // 添加视差滚动效果
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const particles = document.querySelectorAll('.particle');
-            
-            particles.forEach((particle, index) => {
-                const speed = (index % 3 + 1) * 0.1;
-                particle.style.transform = `translateY(${scrolled * speed}px)`;
-            });
+            setTimeout(() => { document.body.style.opacity = '1'; }, 100);
         });
     </script>
 </body>
